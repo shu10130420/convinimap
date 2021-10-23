@@ -1,0 +1,108 @@
+* {margin-top:0;
+    margin-right:auto;
+    margin-bottom:0;
+    margin-left:auto;
+}
+
+.form_user_index {
+    width: 400px;
+    height: 600px;
+    margin-top: 30px;
+    // margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid rgb(7, 7, 7);
+    background-color: white;
+}
+
+.user_jyouhou_syusei{
+    margin-top: 0;
+    font-size: 25px;
+    text-align: center;
+}
+
+.user_acount_del{
+    font-size: 15px;
+    text-align: center;
+}
+
+.yajirusi{
+    font-size: 25px;
+    text-align: center;
+}
+
+.user_dele{
+    text-align: center;
+}
+
+.back{
+    font-size: 15px;
+    text-align: left;
+}
+
+@media screen and (max-width: 376px) {
+.form_user_index {
+    width: 230px;
+    height: 620px;
+    // margin: 50px auto;
+    // padding: 40px;
+    border: 1px solid rgb(7, 7, 7);
+}
+
+.user_jyouhou_syusei{
+    font-size: 25px;
+    text-align: center;
+}
+
+.user_acount_del{
+    font-size: 15px;
+    text-align: center;
+}
+
+.yajirusi{
+    font-size: 25px;
+    text-align: center;
+}
+
+.user_dele{
+    text-align: center;
+}
+
+.back{
+    font-size: 15px;
+    text-align: left;
+}
+}
+
+@media screen and (max-width: 321px) {
+    .form_user_index {
+        width: 180px;
+        height: 730px;
+        // margin: 50px auto;
+        // padding: 30px;
+        border: 1px solid rgb(7, 7, 7);
+    }
+    
+    .user_jyouhou_syusei{
+        font-size: 25px;
+        text-align: center;
+    }
+    
+    .user_acount_del{
+        font-size: 15px;
+        text-align: center;
+    }
+    
+    .yajirusi{
+        font-size: 25px;
+        text-align: center;
+    }
+    
+    .user_dele{
+        text-align: center;
+    }
+    
+    .back{
+        font-size: 15px;
+        text-align: left;
+    }
+    }

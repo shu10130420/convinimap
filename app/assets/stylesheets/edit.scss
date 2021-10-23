@@ -1,0 +1,63 @@
+* {margin-top:0;
+    margin-right:auto;
+    margin-bottom:0;
+    margin-left:auto;
+}
+
+.post_edit{
+    text-align: center;
+    padding: 10px;
+}
+
+.edit {
+    width: 50%;
+    margin-top: 7%;
+    background-color: white;
+    }
+    .edit i,
+    .edit th,
+    .edit td {
+    border: 1px solid #ccc;
+    padding: 15px;
+    text-align: center;
+    }
+    
+    .edit th {
+    font-weight: bold;
+    background-color: #dedede; 
+}
+
+.form_user_index{
+    width: 390px;
+    height: 500px;
+}
+
+
+
+
+@media screen and (max-width: 376px) {
+.form_user_index{
+    width: 210px;
+    height: 600px;
+    padding: 10px;
+}
+
+.edit {
+    width: 50%;
+    background-color: white;
+    margin-top: 30%;
+    }
+}
+
+@media screen and (max-width: 321px) {
+    .form_user_index{
+        width:160px;
+        height: 600px;
+        // padding: 10px;
+    }
+    .edit {
+        width: 50%;
+        background-color: white;
+        margin-top: 10%;
+        }
+}

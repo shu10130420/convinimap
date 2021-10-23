@@ -1,0 +1,69 @@
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+    </label>
+
+<div id="sidebarMenu">
+        <ul class="sidebarMenuInner">
+            <li> <%= link_to "HOME", posts_path %></li>
+            <li> <%= link_to "投稿", posts_new_path %> </li>
+            <li><%= link_to "ユーザー新規登録", new_user_registration_path %></li>
+            <li><a href="/users/sign_in">ログイン</a></li>
+            <li>    <% if user_signed_in? %>
+                        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                    <% end %></a></li>
+            <li>    <% if user_signed_in? %>
+                        <%= link_to "マイページ", user_path(current_user.id) %>
+                    <% end %></li>
+                    <% if user_signed_in? %>
+            <li>  <%= link_to "ユーザー情報を変更する", edit_user_registration_path %>
+                    <% end %></li>
+        </ul>
+</div>
+
+        <table class="edit">
+            <%= form_for @post do |f| %>
+                <th colspan="2">投稿を修正する</th>
+                <div class="field">
+                    <tr >
+                    <th><div class="fa-solid fa-shop"></div></th>
+                    <td>
+                        <%= f.select :store_name, 
+                        [["・ローソン", "・ローソン"], 
+                        ["・ファミマ", "・ファミマ"], 
+                        ["・セブンイレブン", "・セブンイレブン"]], include_blank: "選択して下さい" %></td>
+                    </tr>
+
+                    <tr >
+                    <th><div class="fa-solid fa-clock"></div></th>
+                    <td><%= f.time_field :start, class: 'form-control', id: 'business_start_time' %> 〜
+                        <%= f.time_field :end, class: 'form-control', id: 'business_end_time' %></td>
+                    </tr>
+
+                    <tr >
+                    <th><div class="fa-solid fa-square-parking"></div></th>
+                    <td><%= f.select :parking, 
+                        [["・駐車場あり", "・駐車場あり"], 
+                        ["・駐車場なし", "・駐車場なし"]],  include_blank: "選択して下さい" %></td>
+                    </tr>
+
+                    <tr >
+                    <th><div class="fa-solid fa-toilet"></div></th>
+                    <td><%= f.select :toilet, 
+                        [["・トイレあり", "・トイレあり"], 
+                        ["・トイレなし", "・・トイレなし"]],  include_blank: "選択して下さい" %></td>
+                    </tr>
+
+                    <tr >
+                    <th><div class="fa-solid fa-location-dot"></div></th>
+                    <td><%= f.text_field :address, :size => 50 %></td>
+                    </tr>
+    </div>
+    </table> 
+
+    <div class="post_edit"> 
+        <button type="sai">再投稿</button> 
+    </div>
+<% end %>

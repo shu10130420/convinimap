@@ -1,0 +1,72 @@
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+
+<div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li> <%= link_to "HOME", posts_path %></li>
+      <li> <%= link_to "投稿", posts_new_path %> </li>
+      <li><%= link_to "ユーザー新規登録", new_user_registration_path %></li>
+      <li><a href="/users/sign_in">ログイン</a></li>
+      <li>  <% if user_signed_in? %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+            <% end %></a></li>
+      <li>  <% if user_signed_in? %>
+                <%= link_to "マイページ", user_path(current_user.id) %>
+            <% end %></li>
+      <li>  <%= link_to "ユーザー情報を変更する", edit_user_registration_path %></li>
+    </ul>
+</div>
+
+    
+  <div class="user_jyouhou">My Page</div><br>
+    
+  <div class="oya_user_show">
+    <div class="ta">
+      <table class="user">
+      <tr class="tr1">
+        <th colspan="2">ユーザー情報</th>
+      </tr>
+          <tr >
+          <th>名前 </th>
+          <td><%= @user.name %></td>
+          </tr>
+
+          <tr >
+          <th>メールアドレス </th>
+          <td><%= @user.email %></td>
+          </tr>
+
+          <tr >
+          <th>プロフィール </th>
+          <td> <%= @user.profile %></td>
+          </tr>
+      </table>
+      <% if current_user.id == @user.id %>
+          <%= link_to "ユーザー情報を変更する", edit_user_registration_path, class:"kasen" %>
+      <% end %>
+    </div>
+  <div id="form3">
+  <div class="user_">
+  投稿履歴
+  </div>
+  <div class="user_toukou">
+    <%# <%= page_entries_info @posts %>
+      <% @posts.each do |u| %>
+        <div class="mac">
+            <%= link_to u.created_at.strftime("%m月 %d日"), post_path(u.id) %> /
+            <%= link_to u.address, post_path(u.id), class: "mac2" %>
+            <% if user_signed_in? && current_user.id == u.user_id %>
+            <%= link_to "削除", post_path(u.id),   method: :delete, data: { confirm: '本当に削除しますか?' }, class: "sakujyo" %> 
+            <% end %>
+        </div>
+      <% end %>
+      
+      <%# <div class="page"> %>
+      <%# <%= paginate @posts%> 
+      <%# </div> %>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+
+<div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li> <%= link_to "HOME", posts_path %></li>
+      <li> <%= link_to "投稿", posts_new_path %> </li>
+      <li><%= link_to "ユーザー新規登録", new_user_registration_path %></li>
+      <li><a href="/users/sign_in">ログイン</a></li>
+      <li>  <% if user_signed_in? %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+            <% end %></a></li>
+      <li>  <% if user_signed_in? %>
+                <%= link_to "マイページ", user_path(current_user.id) %>
+            <% end %></li>
+    </ul>
+</div>
+
+
+  <div id="form1">
+    <div class="sign_up">Sign up
+      <hr>
+    </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "users/shared/error_messages", resource: resource %>
+        <div class="field_sign_up">
+          <%= f.label :name %><br />
+          <%= f.text_field :name, autofocus: true %>
+        </div>
+        <div class="field_sign_up">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+        <div class="field_sign_up">
+            <%= f.label :password %>
+            <% if @minimum_password_length %> <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+        <div class="field_sign_up">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+        <div class="actions_sign">
+          <%= f.submit "Sign up " %>
+        </div>
+        <% end %>
+        <br>
+          <%= render "users/shared/links" %>

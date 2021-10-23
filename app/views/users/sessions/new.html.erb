@@ -1,0 +1,50 @@
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+    </label>
+
+<div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+        <li> <%= link_to "HOME", posts_path %></li>
+        <li> <%= link_to "投稿", posts_new_path %> </li>
+        <li><%= link_to "ユーザー新規登録", new_user_registration_path %></li>
+        <li><a href="/users/sign_in">ログイン</a></li>
+        <li>  <% if user_signed_in? %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                <% end %></a></li>
+        <li>  <% if user_signed_in? %>
+                <%= link_to "マイページ", user_path(current_user.id) %>
+                <% end %></li>
+    </ul>
+</div>
+
+
+<div id="form_log">
+    <div class="login">Login</div>
+    <hr>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field1">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="field1">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+        <% end %>
+    
+
+        <div class="actions_log">
+            <%= f.submit "Login" %>
+        </div>
+
+<% end %>
+<br>
+<%= render "users/shared/links" %>
