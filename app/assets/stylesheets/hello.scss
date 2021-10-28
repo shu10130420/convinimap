@@ -63,8 +63,7 @@ body{
     display: none;
 }
 footer{
-    display: none;
-    position: absolute;
+    position: fixed;
 }
 }
 
@@ -75,9 +74,10 @@ footer{
     }
     .top{
         display: none;
+        position: fixed;
+
     }
     footer{
-        display: none;
     }
     }
 
