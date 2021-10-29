@@ -106,6 +106,14 @@ footer{
     z-index: 100;
 }
 
+
+.sidebarMenuInner{
+    width: auto;
+    text-align: center;
+    font-family: cursive;
+    font-size: 20px;
+}
+
 input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
     transition: all 0.3s;
     box-sizing: border-box;

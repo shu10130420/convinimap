@@ -28,8 +28,32 @@
         <div class="title_title">
             <%= link_to "コンビニMAP", posts_path %>
         </div>
-    </header> 
+</header> 
 
+
+<input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+    </label>
+
+<div id="sidebarMenu">
+        <ul class="sidebarMenuInner">
+                <% if user_signed_in? %>
+                        <li><%= link_to "ホーム", posts_path %></li>
+                        <li><%= link_to "投稿", posts_new_path %></li> 
+                        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+                        <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+                        <li><%= link_to "ユーザー情報を変更", edit_user_registration_path %></li>
+                    <% else %>
+                        <li><%= link_to "ホーム", posts_path %></li>
+                        <li><%= link_to "投稿", posts_new_path %></li> 
+                        <li><%= link_to "ユーザー新規登録", new_user_registration_path %></li>
+                        <li><a href="/users/sign_in">ログイン</a></li>
+                    <% end %></a>
+        </ul>
+</div>
     
         <%= yield %>
     
